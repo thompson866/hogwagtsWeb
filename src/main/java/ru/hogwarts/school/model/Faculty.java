@@ -3,9 +3,16 @@ package ru.hogwarts.school.model;
 import java.util.Objects;
 
 public class Faculty {
+
     private Long id;
     private String name;
     private String color;
+
+    public Faculty(Long facultyId, String name, String color) {
+        this.id = facultyId;
+        this.name = name;
+        this.color = color;
+    }
 
     @Override
     public String toString() {
