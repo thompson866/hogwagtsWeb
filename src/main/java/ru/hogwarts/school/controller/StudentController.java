@@ -28,18 +28,19 @@ public class StudentController {
         }
         return ResponseEntity.ok(studentGet);
     }
-    @GetMapping("/age/{studentAge}")
-    public ResponseEntity<Collection<Student>> getStudentAge(@PathVariable Integer studentAge) {
-       Collection <Student> findStudentAge = studentService.getStudentAge(studentAge);
-        if (findStudentAge.size() == 0) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(findStudentAge);
-    }
+//
+//    @GetMapping("/age/{studentAge}")
+//    public ResponseEntity<Collection<Student>> getStudentAge(@PathVariable Integer studentAge) {
+//        Collection<Student> findStudentAge = studentService.getStudentAge(studentAge);
+//        if (findStudentAge.size() == 0) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        return ResponseEntity.ok(findStudentAge);
+//    }
 
     @PostMapping
-    public ResponseEntity <Student> createStudent(@RequestBody Student student) {
-        Student newStudent =studentService.createStudent(student);//??
+    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
+        Student newStudent = studentService.createStudent(student);//??
         return ResponseEntity.ok(newStudent);
     }
 
@@ -53,12 +54,9 @@ public class StudentController {
     }
 
     @DeleteMapping("{studentId}")
-    public ResponseEntity<Student> deleteStudent(@PathVariable Long studentId) {
-        Student deleteStudents = studentService.deleteStudent(studentId);
-        if (deleteStudents == null) {
-            return ResponseEntity.badRequest().build();
-        }
-        return ResponseEntity.ok(deleteStudents);
+    public ResponseEntity deleteStudent(@PathVariable Long studentId) {
+        studentService.deleteStudent(studentId);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping
