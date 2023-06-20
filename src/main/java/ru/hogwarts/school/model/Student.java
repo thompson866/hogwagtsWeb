@@ -2,14 +2,19 @@ package ru.hogwarts.school.model;
 
 import java.util.Objects;
 
+
 public class Student {
     private Long id;
     private String name;
     private int age;
 
-    public Student(Long id) {
-        this.id = id;
+    public Student(long studentId, String name, int age) {
+        this.id = studentId;
+        this.name = name;
+        this.age = age;
     }
+
+
 
     @Override
     public String toString() {
