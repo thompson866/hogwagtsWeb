@@ -37,11 +37,11 @@ public class StudentService {
     public Collection<Student> getAllStudent() {
         return studentRepository.findAll();
     }
-    public Collection<Student> findByAge(int age){
+    public Collection<Student> findStudentByAge(int age){
         return studentRepository.findByAge(age);
     }
 
-
+//
 //    public Collection<Student> getStudentAge(int age) {
 //        return students.values().stream()
 //                .filter(student -> student.getAge() == age)

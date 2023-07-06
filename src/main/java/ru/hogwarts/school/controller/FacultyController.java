@@ -17,7 +17,7 @@ public class FacultyController {
 
     private final FacultyService facultyService;
 
-@Autowired
+    @Autowired
     public FacultyController(FacultyService facultyService) {
         this.facultyService = facultyService;
     }
@@ -67,13 +67,13 @@ public class FacultyController {
     public ResponseEntity<Collection<Faculty>> getAllFaculty() {
         return ResponseEntity.ok(facultyService.getAllFaculty());
     }
-    @GetMapping
-    public ResponseEntity<Collection<Faculty>> findByColor(@RequestParam(required = false) String color) {
-        if (color != null &&!color.isBlank() ) {
-            return ResponseEntity.ok(facultyService.findFacultyColor(color));
 
+    @GetMapping("/color/{facultyColor}")
+    public ResponseEntity<Collection<Faculty>> findByColor(@RequestParam(required = false) String color) {
+        Collection<Faculty> findColor = facultyService.findFacultyColor(color);
+        if (findColor.size() == 0) {
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(facultyService.getAllFaculty());
+        return ResponseEntity.ok(findColor);
     }
 }
-
